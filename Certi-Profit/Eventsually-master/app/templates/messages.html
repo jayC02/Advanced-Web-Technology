@@ -1,0 +1,24 @@
+<head>
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}"/>
+  <link href='https://fonts.googleapis.com/css?family=Delius Unicase' rel='stylesheet'>
+  <link href='https://fonts.googleapis.com/css?family=Didact Gothic' rel='stylesheet'>
+</head>
+
+{% extends "base.html" %}
+
+{% block app_content %}
+    <h1 class="event-name">Messages</h1>
+    {% for message in messages %}
+      <div class="event-description" width="70%">
+        <p>
+          <a class="link" href="{{ url_for('user', username=message.author.username) }}">{{ message.author.username }}</a>
+          said {{ moment(message.timestamp).fromNow() }}:
+        </p>
+        <p>{{ message.body }}</p>
+        <a class="link" href="{{ url_for('send_message', recipient=message.author.username) }}">Reply</a>
+        <br>
+        <a class="link" href="{{ url_for('delete_message', message=message.id) }}">Delete message</a>
+      </div>
+    {% endfor %}
+
+{% endblock %}

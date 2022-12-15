@@ -1,0 +1,42 @@
+<head>
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}"/>
+  <script src="{{ url_for('static', filename='js/posteventform') }}" type="text/javascript"></script>
+  <link href='https://fonts.googleapis.com/css?family=Delius Unicase' rel='stylesheet'>
+  <link href='https://fonts.googleapis.com/css?family=Didact Gothic' rel='stylesheet'>
+</head>
+
+{% import 'bootstrap/wtf.html' as wtf %}
+
+{% with messages = get_flashed_messages() %}
+{% if messages %}
+    {% for message in messages %}
+    <div class="flash">{{ message }}</div>
+    {% endfor %}
+{% endif %}
+{% endwith %}
+
+<!-- THIS PAGE IS USED TO REQUEST A PASSWORD RESET, NOT TO CHANGE IT -->
+
+    <h1 class="event-name">Reset Password</h1>
+    <div>
+        <div>
+          {% if form %}
+            <form class="postform back-form" method="post">
+              {{ form.hidden_tag () }}
+              {{ form.csrf_token }}
+              <label class="post-label">
+                {{ form.email.label (class="label-txt") }}
+                {{ form.email (class="input") }}
+                <div class="line-box">
+                  <div class="line"></div>
+                </div>
+              </label>
+              <label class="post-label">
+                {{ form.submit (class="button") }}
+              </label>
+            </form>
+          {% else %}
+            <h1>Something went wrong :(</h1>
+          {% endif %}
+        </div>
+    </div>

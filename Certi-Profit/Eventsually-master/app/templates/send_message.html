@@ -1,0 +1,32 @@
+<head>
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}"/>
+  <link href='https://fonts.googleapis.com/css?family=Delius Unicase' rel='stylesheet'>
+  <link href='https://fonts.googleapis.com/css?family=Didact Gothic' rel='stylesheet'>
+</head>
+
+{% extends "base.html" %}
+{% import 'bootstrap/wtf.html' as wtf %}
+
+{% block app_content %}
+    <h1 class="event-name">Send message to {{ recipient }}</h1>
+    <div>
+      {% if form %}
+        <form class="postform back-form" method="post">
+          {{ form.hidden_tag () }}
+          {{ form.csrf_token }}
+          <label class="post-label">
+            {{ form.message.label (class="label-txt") }}
+            {{ form.message (class="input") }}
+            <div class="line-box">
+              <div class="line"></div>
+            </div>
+          </label>
+          <label class="post-label">
+            {{ form.submit (class="button") }}
+          </label>
+        </form>
+      {% else %}
+
+      {% endif %}
+    </div>
+{% endblock %}

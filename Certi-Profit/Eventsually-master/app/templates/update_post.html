@@ -1,0 +1,69 @@
+<head>
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}"/>
+  <script src="{{ url_for('static', filename='js/posteventform') }}" type="text/javascript"></script>
+  <link href='https://fonts.googleapis.com/css?family=Delius Unicase' rel='stylesheet'>
+  <link href='https://fonts.googleapis.com/css?family=Didact Gothic' rel='stylesheet'>
+</head>
+
+{% extends "base.html" %}
+{% import 'bootstrap/wtf.html' as wtf %}
+
+{% block app_content %}
+
+  {% if form %}
+    <h1 class="event-name">Update Post</h1>
+    <form class="postform back-form" method="post">
+      {{ form.hidden_tag () }}
+      {{ form.csrf_token }}
+      <label class="post-label">
+        {{ form.title.label (class="label-txt") }}
+        {{ form.title (class="input") }}
+        <div class="line-box">
+          <div class="line"></div>
+        </div>
+      </label>
+      <label class="post-label">
+        {{ form.date.label (class="label-txt") }}
+        {{ form.date (class="input") }}
+        <div class="line-box">
+          <div class="line"></div>
+        </div>
+      </label>
+      <label class="post-label">
+        {{ form.time.label (class="label-txt") }}
+        {{ form.time (class="input") }}
+        <div class="line-box">
+          <div class="line"></div>
+        </div>
+      </label>
+      <label class="post-label">
+        {{ form.venue.label (class="label-txt") }}
+        {{ form.venue (class="input") }}
+        <div class="line-box">
+          <div class="line"></div>
+        </div>
+      </label>
+      <label class="post-label">
+        {{ form.post.label (class="label-txt") }}
+        {{ form.post (class="input") }}
+        <div class="line-box">
+          <div class="line"></div>
+        </div>
+      </label>
+      <label class="post-label">
+        {{ form.eventphoto.label (class="label-txt") }}
+        {{ form.eventphoto }}
+        <div class="line-box">
+          <div class="line"></div>
+        </div>
+      </label>
+      <label class="post-label">
+        {{ form.submit (class="button") }}
+      </label>
+    </form>
+  {% else %}
+    <h1>Something went wrong!</h1>
+    <a href="{{ url_for('index') }}">Back</a>
+  {% endif %}
+
+{% endblock %}

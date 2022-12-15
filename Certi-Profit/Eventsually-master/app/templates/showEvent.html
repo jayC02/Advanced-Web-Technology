@@ -1,0 +1,50 @@
+<head>
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}"/>
+  <script src="{{ url_for('static', filename='js/posteventform') }}" type="text/javascript"></script>
+  <link href='https://fonts.googleapis.com/css?family=Delius Unicase' rel='stylesheet'>
+  <link href='https://fonts.googleapis.com/css?family=Didact Gothic' rel='stylesheet'>
+</head>
+
+{% extends "base.html" %}
+
+{% block app_content %}
+
+{% if post %}
+  {% include '_post.html' %}
+{% endif %}
+
+{% if form %}
+<h1 class="event-name">Leave a comment:</h1>
+<form class="postform back-form" action="" method="post">
+  {{ form.hidden_tag () }}
+  {{ form.csrf_token }}
+  <label class="post-label">
+    {{ form.body.label (class="label-txt") }}
+    {{ form.body (class="input") }}
+    <div class="line-box">
+      <div class="line"></div>
+    </div>
+  </label>
+
+  <label class="post-label">
+    {{ form.submit (class="button") }}
+  </label>
+</form>
+{% endif %}
+
+{% if comments %}
+  {% for c in comments %}
+  <div class="event-description" width="70%">
+    <p>
+      <a class="link" href="{{ url_for('user', username=c.username) }}">{{ c.username }}</a>
+      said {{ moment(c.timestamp).fromNow() }}:
+    </p>
+    <p>{{ c.body }}</p>
+    {% if ((current_user.username == c.username) or (current_user.id == post.author.id))  %}
+        <a class="link" href="{{ url_for('delete_comment', post_id=post.id, comment_id=c.id) }}">Delete message</a>
+    {% endif %}
+  </div>
+  {% endfor %}
+{% endif %}
+
+{% endblock %}

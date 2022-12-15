@@ -1,0 +1,17 @@
+<head>
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}"/>
+  <link href='https://fonts.googleapis.com/css?family=Delius Unicase' rel='stylesheet'>
+  <link href='https://fonts.googleapis.com/css?family=Didact Gothic' rel='stylesheet'>
+</head>
+
+{% with messages = get_flashed_messages() %}
+{% if messages %}
+    {% for message in messages %}
+    <div class="flash">{{ message }}</div>
+    {% endfor %}
+{% endif %}
+{% endwith %}
+
+    <h1 class="event-name">Something went wrong!!</h1>
+    <br>
+    <a href="{{ url_for('index') }}">Back</a>
