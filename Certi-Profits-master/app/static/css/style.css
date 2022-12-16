@@ -1,0 +1,305 @@
+/*
+MAIN THINGS
+*/
+body {
+  font-family: "Helvetica Neue", sans-serif;
+  color: #333;
+  background-color: #f5f5f5;
+}
+
+.post {
+  max-width: 1200px;
+  margin: 0 auto;
+  background-color: #fff;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.post .date {
+  background-color: #3f51b5;
+  color: #fff;
+  text-align: center;
+}
+
+.post .date .fondo {
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+  display: inline-block;
+  vertical-align: middle;
+  line-height: 80px;
+  font-size: 1.5em;
+}
+
+.post .date .event {
+  padding: 20px;
+  vertical-align: top;
+}
+
+.post .date .event .event-name {
+  font-size: 2em;
+  font-family: "Roboto", sans-serif;
+  color: #333;
+  text-decoration: none;
+}
+
+.post .date .event .event-description {
+  font-size: 1.5em;
+  font-family: "Roboto", cursive;
+  color: #666;
+  margin: 20px 0;
+}
+
+.post .date .event .event-info {
+  font-size: 1.2em;
+  color: #999;
+}
+
+.post .date .event .event-info .link {
+  color: #95b8d5;
+}
+
+.post .date .event-photo {
+  width: 300px;
+  vertical-align: top;
+}
+
+.post .date .event-photo img {
+  width: 100%;
+}
+
+/* 
+  NAVBAR STYLES
+*/
+.nav {
+  height: 70px;
+  width: 100%;
+  font-family: "Montserrat", sans-serif;
+}
+.nav ul {
+  margin: 0;
+  list-style: none;
+}
+.nav li {
+  font-family: 'Montserrat', sans-serif;
+  font-size: 20px;
+  float: left;
+}
+.nav a {
+  padding: 21px 20px;
+  text-decoration: none;
+  display: inline-block;
+  color: #636e72;
+}
+.nav a:hover {
+  background-color: #fdcb6e;
+  color: white;
+}
+
+/*
+  INDEX.HTML POST EVENT FORM
+*/
+.title-h1 {
+  text-align: left;
+  font-size: 6rem;
+  font-family: "Montserrat", sans-serif;
+  padding: 20px;
+  margin: 15px;
+  z-index: 1;
+  opacity: 0.7;
+}
+
+.post-label {
+  display: block;
+  position: relative;
+  margin: 40px 0px;
+}
+.input {
+  width: 100%;
+  padding: 10px;
+  background: transparent;
+  border: none;
+  outline: none;
+}
+
+.line-box {
+  position: relative;
+  width: 100%;
+  height: 2px;
+  background: #dfe6e9;
+}
+
+.postform {
+  width: 60%;
+  margin: 60px auto;
+  background: #f8f9f9;
+  padding: 60px 120px 80px 120px;
+  text-align: center;
+  -webkit-box-shadow: 2px 2px 3px rgba(0,0,0,0.1);
+  box-shadow: 2px 2px 3px rgba(0,0,0,0.1);
+}
+
+.line {
+  position: absolute;
+  width: 0%;
+  height: 2px;
+  top: 0px;
+  left: 50%;
+  transform: translateX(-50%);
+  background: #fdcb6e;
+  transition: ease .6s;
+}
+
+.input:focus + .line-box .line {
+  width: 100%;
+}
+
+.label-txt {
+  position: absolute;
+  top: -1.6em;
+  padding: 10px;
+  font-family: "Montserrat", sans-serif;
+  font-size: 1.2em;
+  letter-spacing: 1px;
+  color: #fdcb6e;
+  transition: ease .3s;
+}
+
+.label-active {
+  top: -3em;
+}
+
+.submit {
+  display: inline-block;
+  padding: 12px 24px;
+  transition: ease .3s;
+}
+
+.button{
+  background-color: #CF98C2;
+  color: white;
+  font-family: "Roboto";
+  border-radius: 12px;
+  border: 2px solid #CF98C2;
+  padding: 10px 20px;
+}
+.button:hover{
+  background-color: transparent;
+  color: #CF98C2;
+}
+
+/*
+ POST CSS
+*/
+.event{
+  padding-left: 20px;
+  width: 100%;
+}
+.event-name{
+  font-family: 'Roboto';
+  color: #C581CC; /* PURPLE */
+  font-size: 40px;
+  padding-left: 20px;
+}
+.event-month{
+  color: #CF98C2; /* PURPLE */
+  font-size: 61px;
+  font-family: 'Roboto';
+}
+.event-day{
+  font-size: 96px;
+  text-align: center;
+  font-family: 'Roboto';
+  color: white;
+  margin-bottom: 0;
+}
+.event-description{
+  background-color: #FAEAEA;
+  border-radius: 5px;
+  padding: 20px;
+  font-family: "sans-serif";
+  margin: 5px;
+}
+.event-photo{
+  align: right;
+}
+.event-photo img{
+  height: 200px;
+  width: 200px;
+  border-radius: 10px;
+  object-fit: cover;
+}
+.event-info{
+  font-family: "sans-serif";
+  font-size: 12px;
+}
+.fondo{
+  background-color: dimgrey;
+  border-radius: 4px;
+  padding: 0 30px;
+}
+table .date {
+  padding: 0 30px;
+}
+.post{
+  border: 1px solid dimgrey;
+  border-radius: 10px;
+  width: 80%;
+  margin: 20px auto;
+}
+
+/*
+USER
+*/
+.user{
+  margin: auto;
+  margin-top: 20px;
+  margin-bottom: 20px;
+  width: 70%;
+  grid-template-rows: auto auto;
+  padding: 20px;
+  border: 1px solid #F8BAAD;
+  border-radius: 10px;
+}
+.profilepic{
+  justify-content: center;
+  align-items: center;
+}
+.profilepic img{
+  border-radius: 100px;
+  width: 200px;
+  object-fit: cover;
+}
+.profilepic p {
+  text-align: center;
+}
+.profile-info{
+  margin: auto;
+}
+.followers{
+  border: 1px dashed #F8BAAD; /*PASTEL ORANGE */
+  font-family: "sans-serif";
+  width: 20%;
+  float: left;
+  border-radius: 12px;
+}
+.follower-label{
+  padding-left: 3px;
+}
+.follower-count{
+  padding-left: 5px;
+}
+.follow{
+  background-color: #F8BAAD; /*PASTEL ORANGE */
+  font-family: "sans-serif";
+  color: white;
+  margin: auto;
+  font-weight: bold;
+  padding: 5px 15px;
+  border-radius: 18px;
+}
+.user-events{
+  font-family: 'Roboto';
+  color: #F8BAAD; /* PASTLE */
+  font-size: 40px;
+  padding-left: 7%;
+}
