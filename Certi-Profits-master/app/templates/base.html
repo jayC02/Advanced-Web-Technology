@@ -1,0 +1,50 @@
+{% extends 'bootstrap/base.html' %}
+
+<head>
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}"/>
+  <script src="{{ url_for('static', filename='js/posteventform') }}" type="text/javascript"></script>
+  <link href='https://fonts.googleapis.com/css?family=Roboto:400,700' rel='stylesheet'>
+  <link href='https://fonts.googleapis.com/css?family=Montserrat:400,700' rel='stylesheet'>
+</head>
+{% block title %}
+{{ title }}
+{% endblock %}
+
+{% block navbar %}
+
+  <div class="nav" style="background-color: #3f51b5;">
+    <ul style="display: flex; justify-content: space-between; align-items: center;">
+      <li style="font-family: 'Roboto', sans-serif; font-size: 20px;"><a style="padding: 21px 20px; text-decoration: none; display: inline-block; color: white;" href="{{ url_for('explore') }}">Shared Tickers</a></li>
+      <li style="font-family: 'Roboto', sans-serif; font-size: 20px;"><a style="padding: 21px 20px; text-decoration: none; display: inline-block; color: white;" href="{{ url_for('index') }}">Post Ticker</a></li>
+      <li style="font-family: 'Roboto', sans-serif; font-size: 20px;"><a style="padding: 21px 20px; text-decoration: none; display: inline-block; color: white;" href="{{ url_for('messages') }}">Messages
+          {% set new_messages = current_user.new_messages() %}
+          {% if new_messages %}
+            <span style="color: #ffc107;">{{ new_messages }}</span>
+          {% endif %}
+      </a></li>
+      <li style="font-family: 'Roboto', sans-serif; font-size: 20px;"><a style="padding: 21px 20px; text-decoration: none; display: inline-block; color: white;" href="{{ url_for('user', username=current_user.username) }}">Profile</a></li>
+      <li style="font-family: 'Roboto', sans-serif; font-size: 20px;"><a style="padding: 21px 20px; text-decoration: none; display: inline-block; color: white;" href="{{ url_for('logout') }}">Logout</a></li>
+    </ul>
+  </div>
+{% endblock %}
+
+{% block content %}
+    <div>
+        {% with messages = get_flashed_messages() %}
+        {% if messages %}
+            {% for message in messages %}
+            <div class="flash">{{ message }}</div>
+            {% endfor %}
+        {% endif %}
+        {% endwith %}
+
+        {% block app_content %}
+        {% endblock %}
+
+    </div>
+{% endblock %}
+
+{% block scripts %}
+    {{ super() }}
+    {{ moment.include_moment() }}
+{% endblock %}
