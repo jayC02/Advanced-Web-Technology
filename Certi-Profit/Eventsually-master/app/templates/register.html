@@ -1,0 +1,84 @@
+<head>
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}"/>
+  <script src="{{ url_for('static', filename='js/posteventform') }}" type="text/javascript"></script>
+  <link href='https://fonts.googleapis.com/css?family=Roboto' rel='stylesheet'>
+</head>
+
+{% with messages = get_flashed_messages() %}
+{% if messages %}
+    {% for message in messages %}
+    <div class="flash" style="background-color: #F8D7DA; color: #721C24;">{{ message }}</div>
+    {% endfor %}
+{% endif %}
+{% endwith %}
+
+{% import 'bootstrap/wtf.html' as wtf %}
+
+    <h1 class="event-name" style="font-family: 'Roboto', sans-serif; color: #721C24;">Register</h1>
+    <div>
+      {%if form %}
+        <form class="postform back-form" method="post" enctype="multipart/form-data">
+          {{ form.hidden_tag () }}
+          {{ form.csrf_token }}
+          <label class="post-label" style="font-family: 'Roboto', sans-serif; color: #721C24;">
+            {{ form.username.label (class="label-txt") }}
+            {{ form.username (class="input", style="border: 1px solid #721C24;") }}
+            <div class="line-box">
+              <div class="line" style="background-color: #721C24;"></div>
+            </div>
+          </label>
+          <label class="post-label" style="font-family: 'Roboto', sans-serif; color: #721C24;">
+            {{ form.email.label (class="label-txt") }}
+            {{ form.email (class="input", style="border: 1px solid #721C24;") }}
+            <div class="line-box">
+              <div class="line" style="background-color: #721C24;"></div>
+            </div>
+          </label>
+          <label class="post-label" style="font-family: 'Roboto', sans-serif; color: #721C24;">
+            {{ form.password.label (class="label-txt") }}
+            {{ form.password (class="input", style="border: 1px solid #721C24;") }}
+            <div class="line-box">
+              <div class="line" style="background-color: #721C24;"></div>
+            </div>
+          </label>
+          <label class="post-label" style="font-family: 'Roboto', sans-serif; color: #721C24;">
+            {{ form.password2.label (class="label-txt") }}
+            {{ form.password2 (class="input", style="border: 1px solid #721C24;") }}
+            <div class="line-box">
+              <div class="line"></div>
+            </div>
+          </label>
+          <label class="post-label"> style="font-family: 'Roboto', sans-serif; color: #721C24;">
+            {{ form.profilepic.label (class="label-txt") }}
+            {{ form.profilepic (class="input", style="border: 1px solid #721C24;") }}
+            <div class="line-box">
+              <div class="line"></div>
+            </div>
+          </label>
+          <label class="post-label"> style="font-family: 'Roboto', sans-serif; color: #721C24;">
+            {{ form.submit (class="button", style="border: 1px solid #721C24;") }}
+          </label>
+        </form>
+      {% else %}
+        <h1>Something went wrong!</h1>
+      {% endif %}
+    </div> 
+            <div class="line-box"> style="font-family: 'Roboto', sans-serif; color: #721C24;">
+              <div class="line"></div>
+            </div>
+          </label>
+          <label class="post-label"> style="font-family: 'Roboto', sans-serif; color: #721C24;">
+            {{ form.profilepic.label (class="label-txt") }}
+            {{ form.profilepic (class="input") }}
+            <div class="line-box">
+              <div class="line"></div>
+            </div>
+          </label>
+          <label class="post-label"> style="font-family: 'Roboto', sans-serif; color: #721C24;">
+            {{ form.submit (class="button", style="border: 1px solid #721C24;") }}
+          </label>
+        </form>
+      {% else %}
+        <h1>Something went wrong!</h1>
+      {% endif %}
+    </div>
