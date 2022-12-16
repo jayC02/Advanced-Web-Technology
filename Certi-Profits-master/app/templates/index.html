@@ -1,0 +1,79 @@
+<head>
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}"/>
+  <script src="{{ url_for('static', filename='js/posteventform') }}" type="text/javascript"></script>
+  <link href='https://fonts.googleapis.com/css?family=Roboto:400,700' rel='stylesheet'>
+  <link href='https://fonts.googleapis.com/css?family=Montserrat:400,700' rel='stylesheet'>
+</head>
+
+{% extends "base.html" %}
+
+{% block app_content %}
+  {% if form %}
+    <h1 class="title-h1">Post your ticker here, {{ current_user.username }}!</h1>
+
+    <form class="postform back-form" action="" method="POST" enctype="multipart/form-data">
+      {{ form.hidden_tag () }}
+      {{ form.csrf_token }}
+      <label class="post-label">
+        {{ form.title.label (class="label-txt") }}
+        {{ form.title (class="input") }}
+        <div class="line-box">
+          <div class="line"></div>
+        </div>
+      </label>
+
+      <label class="post-label">
+        {{ form.date.label (class="label-txt") }}
+        {{ form.date (class="input") }}
+        <div class="line-box">
+          <div class="line"></div>
+        </div>
+      </label>
+
+      <label class="post-label">
+        {{ form.time.label (class="label-txt") }}
+        {{ form.time (class="input") }}
+        <div class="line-box">
+          <div class="line"></div>
+        </div>
+      </label>
+
+      <label class="post-label">
+        {{ form.venue.label (class="label-txt") }}
+        {{ form.venue (class="input") }}
+        <div class="line-box">
+          <div class="line"></div>
+        </div>
+      </label>
+
+      <label class="post-label">
+        {{ form.post.label (class="label-txt") }}
+        {{ form.post (class="input") }}
+        <div class="line-box">
+          <div class="line"></div>
+        </div>
+      </label>
+
+      <label class="post-label">
+        {{ form.eventphoto.label (class="label-txt") }}
+        {{ form.eventphoto }}
+        <div class="line-box">
+          <div class="line"></div>
+        </div>
+      </label>
+
+      <label class="post-label">
+        {{ form.submit (class="button") }}
+      </label>
+
+    </form>
+
+  {% endif %}
+
+  {% if posts %}
+    {% for post in posts %}
+      {% include '_post.html' %}
+    {% endfor %}
+  {% endif %}
+
+{% endblock %}
